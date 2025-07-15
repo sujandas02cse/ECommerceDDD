@@ -11,7 +11,5 @@ namespace ECommerce.Application.Services
     {
         Task<int> PlaceOrderAsync(CreateOrderRequestDTO orderRequest);
         Task<OrderDTO?> GetOrderByIdAsync(int orderId);
-
-
     }
 }
