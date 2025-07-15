@@ -39,9 +39,14 @@ namespace ECommerce.Application.Services
             _mapper = mapper;
 
         }
-        public Task<OrderDTO?> GetOrderByIdAsync(int orderId)
+        public async Task<OrderDTO?> GetOrderByIdAsync(int orderId)
         {
-            throw new NotImplementedException();
+            var order = await _orderRepository.GetByIdAsync(orderId);
+            if (order == null)
+            {
+                return null;
+            }
+            return _mapper.Map<OrderDTO>(order);
         }
 
         public async Task<int> PlaceOrderAsync(CreateOrderRequestDTO request)
